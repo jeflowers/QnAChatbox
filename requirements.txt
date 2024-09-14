@@ -1,0 +1,6 @@
+llama-index-core
+llama-index-readers-file
+llama-index-llms-nvidia
+llama-index-embeddings-nvidia
+llama-index-postprocessor-nvidia-rerank
+ipywidgets
