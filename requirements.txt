@@ -4,3 +4,4 @@ llama-index-llms-nvidia
 llama-index-embeddings-nvidia
 llama-index-postprocessor-nvidia-rerank
 ipywidgets
+gradio
