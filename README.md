@@ -11,7 +11,7 @@ This application demonstrates a Retrieval-Augmented Generation (RAG) Question & 
 
 ## Prerequisites
 
-- Python 3.7+
+- Python 3.8+
 - NVIDIA API Key (set as an environment variable `NVIDIA_API_KEY`)
 
 ### Getting an NVIDIA API Key
@@ -49,16 +49,16 @@ Note: Keep your API key confidential and do not share it publicly or commit it t
    cd <repository-directory>
    ```
 
-2. Install the required packages:
+2. Run the setup script:
    ```
-   pip install -r requirements.txt
+   ./scripts/setup.sh
    ```
 
 ## Usage
 
 1. Run the application:
    ```
-   python nchat.py
+   python -m src.nchat
    ```
 
 2. Open your web browser and navigate to `http://127.0.0.1:7860` (or the URL provided in the console output).
@@ -68,51 +68,99 @@ Note: Keep your API key confidential and do not share it publicly or commit it t
    - Load the documents into the system
    - Ask questions based on the loaded documents
 
-## Application Structure
+## Project Structure
 
-- `nchat.py`: Main application file containing the RAG Q&A system implementation.
-- `requirements.txt`: List of Python packages required for the application.
+```
+multimodal_rag_project/
+├── .github/
+│   └── workflows/
+│       ├── cd.yml
+│       └── ci.yml
+├── scripts/
+│   ├── run_tests.sh
+│   └── setup.sh
+├── src/
+│   ├── application/
+│   │   └── __init__.py
+│   ├── config/
+│   │   ├── __init__.py
+│   │   └── config_manager.py
+│   ├── data/
+│   │   ├── __init__.py
+│   │   └── document_loader.py
+│   ├── interface/
+│   │   ├── __init__.py
+│   │   ├── chat_interface.py
+│   │   └── gradio_ui_manager.py
+│   ├── processing/
+│   │   ├── __init__.py
+│   │   ├── index_manager.py
+│   │   └── query_processor.py
+│   ├── storage/
+│   │   └── __init__.py
+│   └── nchat.py
+├── tests/
+│   ├── integration/
+│   └── unit/
+├── .env
+├── .gitignore
+├── .pre-commit-config.yaml
+├── Dockerfile
+├── LICENSE
+├── milvus_demo.db
+├── README.md
+├── requirements.txt
+└── TypicalAgileModel.drawio
+```
 
 ## Key Components
 
-1. **Document Loading**: Uses `SimpleDirectoryReader` to load documents from various file formats.
+1. **Document Loading**: Uses `SimpleDirectoryReader` in `document_loader.py` to load documents from various file formats.
 2. **Vector Store**: Utilizes `MilvusVectorStore` for efficient storage and retrieval of document embeddings.
 3. **Embedding Model**: Employs `NVIDIAEmbedding` for creating high-quality text embeddings.
 4. **Language Model**: Uses `NVIDIA` LLM (Llama3) for generating responses to user queries.
-5. **Index Creation**: Implements `VectorStoreIndex` to create a searchable index of document embeddings.
-6. **Query Engine**: Utilizes LlamaIndex's query engine for processing user questions and retrieving relevant information.
-7. **User Interface**: Built with Gradio for an easy-to-use web interface.
+5. **Index Creation**: Implements `VectorStoreIndex` in `index_manager.py` to create a searchable index of document embeddings.
+6. **Query Engine**: Utilizes LlamaIndex's query engine in `query_processor.py` for processing user questions and retrieving relevant information.
+7. **User Interface**: Built with Gradio in `gradio_ui_manager.py` for an easy-to-use web interface.
+8. **Application Logic**: Managed by `application_manager.py` to orchestrate the entire process.
+9. **Configuration**: Handled by `config_manager.py` to manage application settings.
 
 ## Contributing
 
-Contributions to improve the application are welcome. Please follow the standard GitHub pull request process to submit your changes.
+Contributions to improve the application are welcome. Please follow these steps:
+
+1. Fork the repository
+2. Create a new branch (`git checkout -b feature-branch`)
+3. Make your changes
+4. Run tests (`./scripts/run_tests.sh`)
+5. Commit your changes (`git commit -am 'Add some feature'`)
+6. Push to the branch (`git push origin feature-branch`)
+7. Create a new Pull Request
+
+Please ensure your code adheres to the project's style guide and passes all tests.
 
 ## License
 
-MIT License
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
 Copyright (c) 2024 John Flowers
-
-Permission is hereby granted, free of charge, to any person obtaining a copy
-of this software and associated documentation files (the "Software"), to deal
-in the Software without restriction, including without limitation the rights
-to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-copies of the Software, and to permit persons to whom the Software is
-furnished to do so, subject to the following conditions:
-
-The above copyright notice and this permission notice shall be included in all
-copies or substantial portions of the Software.
-
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-SOFTWARE.
 
 ## Acknowledgments
 
 - NVIDIA for providing the AI technologies used in this application.
 - LlamaIndex for the powerful indexing and querying capabilities.
 - Gradio for the user interface framework.
+
+## Deployment
+
+For deployment instructions, please refer to the `cd.yml` file in the `.github/workflows/` directory. This file contains the Continuous Deployment configuration for the project.
+
+## Development
+
+To set up the development environment:
+
+1. Run `./scripts/setup.sh` to create a virtual environment and install dependencies.
+2. Use `./scripts/run_tests.sh` to run the test suite.
+3. The `.pre-commit-config.yaml` file is set up to maintain code quality. Ensure you run `pre-commit install` after setting up your environment.
+
+For any additional information or troubleshooting, please refer to the project documentation or open an issue on the GitHub repository.

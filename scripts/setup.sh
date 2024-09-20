@@ -13,4 +13,8 @@ pip install -r requirements.txt
 pip install pre-commit
 pre-commit install
 
+# Create necessary directories
+mkdir -p src/{application,config,data,interface,processing,storage}
+touch src/{application,config,data,interface,processing,storage}/__init__.py
+
 echo "Environment setup complete. Activate it with 'source venv/bin/activate'"
