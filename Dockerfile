@@ -5,7 +5,7 @@ WORKDIR /app
 COPY requirements.txt .
 RUN pip install --no-cache-dir -r requirements.txt
 
-COPY src/ .
+COPY src/ src/
 COPY README.md .
 
-CMD ["python", "nchat.py"]
+CMD ["python", "-m", "src.main"]
