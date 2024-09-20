@@ -1,4 +1,4 @@
-from application_manager import ApplicationManager
+from src.application.application_manager import ApplicationManager
 
 def main():
     app_manager = ApplicationManager()

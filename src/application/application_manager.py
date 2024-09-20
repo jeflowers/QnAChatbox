@@ -1,12 +1,12 @@
 # Refactored nchat.py
 
-from config_manager import ConfigManager
-from document_loader import DocumentLoader
-from vector_store_manager import VectorStoreManager
-from index_manager import IndexManager
-from query_processor import QueryProcessor
-from chat_interface import ChatInterface
-from gradio_ui_manager import GradioUIManager
+from src.config.config_manager import ConfigManager
+from src.data.document_loader import DocumentLoader
+from src.storage.vector_store_manager import VectorStoreManager
+from src.processing.index_manager import IndexManager
+from src.processing.query_processor import QueryProcessor
+from src.interface.chat_interface import ChatInterface
+from src.interface.gradio_ui_manager import GradioUIManager
 
 
 class ApplicationManager:
