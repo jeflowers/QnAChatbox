@@ -107,7 +107,6 @@ multimodal_rag_project/
 ├── .pre-commit-config.yaml
 ├── Dockerfile
 ├── LICENSE
-├── milvus_demo.db
 ├── README.md
 ├── requirements.txt
 └── TypicalAgileModel.drawio
