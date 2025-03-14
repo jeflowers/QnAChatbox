@@ -76,18 +76,24 @@ multimodal_rag_project/
 │   └── workflows/
 │       ├── cd.yml
 │       └── ci.yml
+├── docs/
+│   └── google_interface_implementation.md   <-- New implementation guide
 ├── scripts/
 │   ├── run_tests.sh
 │   └── setup.sh
 ├── src/
 │   ├── application/
-│   │   └── __init__.py
+│   │   ├── __init__.py
+│   │   └── application_manager.py
 │   ├── config/
 │   │   ├── __init__.py
 │   │   └── config_manager.py
 │   ├── data/
 │   │   ├── __init__.py
 │   │   └── document_loader.py
+│   ├── google_interface/                    <-- New directory for Google interface components
+│   │   ├── __init__.py
+│   │   └── flask_app.py                     <-- New Flask application
 │   ├── interface/
 │   │   ├── __init__.py
 │   │   ├── chat_interface.py
@@ -97,8 +103,11 @@ multimodal_rag_project/
 │   │   ├── index_manager.py
 │   │   └── query_processor.py
 │   ├── storage/
-│   │   └── __init__.py
+│   │   ├── __init__.py
+│   │   └── vector_store_manager.py
 │   └── nchat.py
+├── templates/                               <-- New directory for HTML templates
+│   └── google_interface.html                <-- New Google-style HTML template
 ├── tests/
 │   ├── integration/
 │   └── unit/
@@ -107,9 +116,11 @@ multimodal_rag_project/
 ├── .pre-commit-config.yaml
 ├── Dockerfile
 ├── LICENSE
-├── README.md
-├── requirements.txt
-└── TypicalAgileModel.drawio
+├── milvus_demo.db
+├── README.md                                <-- Updated with reference to implementation guide
+├── google_interface.py                      <-- New entry point for Google interface
+├── requirements.txt                         <-- Updated with Flask dependency
+└── architecture_overview.md                 <-- New overall architecture document
 ```
 
 ## Key Components
