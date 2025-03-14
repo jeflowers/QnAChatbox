@@ -1,0 +1,27 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Virtual environment
+venv/
+env/
+
+# IDEs
+.vscode/
+.idea/
+
+# Logs
+*.log
+
+# Local database
+milvus_demo.db/
+
+# Environment variables
+.env
+
+# Compiled files
+*.pyc
+
+# Temporary files
+*.tmp
