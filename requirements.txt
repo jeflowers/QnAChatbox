@@ -5,3 +5,5 @@ llama-index-embeddings-nvidia
 llama-index-postprocessor-nvidia-rerank
 ipywidgets
 gradio
+flask>=2.0.0
+python-dotenv
